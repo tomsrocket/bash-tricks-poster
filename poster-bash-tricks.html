@@ -1,0 +1,435 @@
+<html>
+<head>
+    <title>bash tricks poster</title>
+<style>
+    .examples  {padding:5px 10px; }
+    .examples code {display:block;}
+    h1 {font-size:3em;}
+    .section {width:23%;float:left;padding-right:20px;}
+    table {width:100%}
+    .desc span, code, code i, .inner b {font-family:Courier, monospace;font-weight:normal;}
+    .desc { font-family: Verdana;}
+    table { border-collapse:collapse;}
+    code i {display:block;float:right;width:65%;opacity:0.4;}
+    .inner {margin-top:10px;margin-bottom:10px;}
+    .inner b {opacity:0.4;}
+    .wide code i {width:80%;}
+    code {clear:both;}
+    table td {padding:0 5px ;}
+    h3 {margin:0;line-height:16px;}
+    body {
+        margin-left:30px;
+        font-size: 12px;
+        line-height: 20px;
+    }
+    h2 {margin-top:20px;}
+    .desc span {display:block;}
+    .desc > span {margin-bottom:6px;}
+    .content > b {margin-top:10px;display:block}
+    .inner {display:block;margin-left:20px;}
+    .inner b {}
+    .breaker {clear:left;}
+    .breaker-small {clear:right;}
+    @media print {
+        body {font-size: 14px;line-height:22px;}
+    }
+
+</style>
+<link href="poster-dark-style.css" rel="stylesheet" type="text/css" />
+
+<!-- 
+
+    how to generate A1 PDF from this file: 
+    ./wkhtmltopdf -O Landscape -s A1 /var/www/poster-bash-tricks.html test-a1-v2.pdf
+-->
+
+</head>
+<body>
+<div id="poster">
+
+    <div id="header">
+        <h1>bash.tricks <span>linux shell by example</span></h1>
+    </div>
+    <div id="main">
+
+
+
+
+        <div class="section">
+            <h2>basic commands</h2>
+            <div class="content">
+                <b>system info</b>
+                <div class="examples">
+                    <code> cat /etc/issue<i>show linux distribution name</i></code>
+                    <code> cat /proc/version <i> show kernel version, etc..</i></code> 
+                    <code> cat /proc/cpuinfo <i> processor information</i></code>
+                    <code> cat /etc/passwd <i> list users on the system</i></code>
+                    <code> cat /etc/services <i>list reserved ports</i></code>
+                    <code> date <i> display system time</i></code>
+                    <code> hostname <i> show current machine hostname</i></code>
+                    <code> free <i> show memory usage</i></code>
+                    <code> uptime <i> show time since the last boot</i></code>
+                    <code> uname -a <i> show information about system</i></code>
+                </div>
+
+                <b> commands </b>
+                <div class="examples">
+                    <code>which [cmd] <i> show path of command [cmd]</i></code>
+                    <code>ldd [path-to-cmd] <i> show libraries used by [cmd] </i></code>
+                </div>
+
+                <b> users </b>
+                <div class="examples">
+                    <code> whoami <i>show current username</i></code>
+                    <code> w / who <i>show logged in users</i></code>
+                    <code> finger user_name <i> System info about user</i></code>
+                    <code> write somuser <i>Write a message to a logged in user</i></code>
+                    <code> last <i> show last logins on your system</i></code>
+                    <code> lastb <i> ("=last bad") show unsuccessful login attempts </i></code>
+                </div>
+
+                <b> drives </b>
+                <div class="examples">
+                    <code> df -h <i> show harddrive usage</i></code>
+                    <code> mount <i> show mount points</i></code>
+                    <code> fdisk -l <i> show harddrive and partition info</i></code>
+                    <code> hdparm -t /dev/hdX <i>show HD speed (~100MB/s is normal) </i></code> 
+                    <code> hdparm -iI /dev/hdX <i> Harddrive information</i></code>
+                </div>                
+
+                <b> files </b>
+                <div class="examples">
+                    <code> pwd <i>display current path</i></code>
+                    <code> stat $filename <i>show filesystem info about file</i></code>
+                    <code> file $filename <i>show file type information</i></code>
+                    <code> time $command <i>measure execution time of command</i></code>
+                    <code> rename 's/\.png$/.jpg/' * <i>batch rename files</i></code>
+                    <code> du <i> size of current directory </i></code>
+                    <code> du --max-depth=1 <i> list sizes of direct subdirs</i></code>
+                </div>
+
+                <b> package management </b>
+                <div class="examples">
+                    <code> apt-cache search regexp <i>search available packages for regexp</i></code>
+                    <code> apt-get install [pkg] <i>install package named [pkg]</i></code>
+                </div>
+
+
+
+                    PATH=somenewpath:$PATH - Suchpfad hinzufügen 
+                    mail -s "mail betreff" irgendwer@wo.de - Email versenden, Ende = STRG+D 
+                    mail -s "mail betreff" irgendwer@wo.de < body.txt - Ohne Interaktion 
+                    echo "bodytext" | mail -s "mail betreff" irgendwer@wo.de - Ohne Datei :-) 
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>processes</h2>
+            <div class="content">
+                <b>process basics</b>
+                <div class="examples">
+                    <code> ps faux <i>list all processes</i></code>
+                    <code> top <i>show processes with most resource usage</i></code>
+                    <code> lsof -n -P |grep * <i> list used ports </i></code>
+                </div>
+                <b>netstat</b>
+                <div class="examples">
+                    <code> netstat -lpnv <i>list listening applications</i></code>
+                    <code> <i>-l only listening sockets</i></code>
+                    <code> <i>-p show process names and ids</i></code>
+                    <code> <i>-n numeric, dont resolve hostnames</i></code>
+                    <code> <i>-v verbose </i></code>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="section">
+            <h2>grep</h2>
+            <div class="content">
+                <div class="desc">
+                    <span>grep <b>[options]</b> searchstring <b>[file(s)]</b></span>
+                    search file(s) and show all lines that contain the searchstring. If searching in more than one file, also shows filename.
+                    grep can also accept input from STDIN.
+                </div>
+                <b> examples </b>
+                <div class="examples wide">
+                    <code> grep string *.html -r<i> find string in html files (recursively), show filenames and lines</i></code>
+                    <code> grep -P "regexp" *.sh <i> show regexp matches in .sh files in current dir </i></code>
+                    <code> ls | grep  string <i> show all filenames that contain string </i></code>
+                </div>
+                <b> options </b>
+                <div class="examples wide">
+                    <code> grep -r<i> find recursively in subdirs</i></code>
+                    <code> grep -o<i> show only the found string</i></code>
+                    <code> grep -i<i> case insensitive</i></code>
+                    <code> grep -v<i> invert match</i></code>
+                    <code> grep -P<i> perl regular expression matching</i></code>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="section">
+            <h2>find</h2>
+            <div class="content">
+                <div class="desc">
+                    <span>find <b>[path]</b> <b>[criteria]</b> <b>[action]</b></span>
+                    all files in <b>path</b> + its subdirectories, if they match <b>criteria</b>, apply <b>action</b>. Default action is "print path+filename". Default path is "current directory".
+                </div>
+                <b>search parameters</b>
+                <div class="examples">
+                    <code> -name <span>whatever</span> <i># search filename case sensitive  </i></code>
+                    <code> -<b>i</b>name <span>whatever</span> <i># filename case <b>insensitive</b></i></code>
+                    <code> -ipath <span>whatever</span> <i># search path case insensitive</i></code>
+                    <code> -regex / -iregex <i># regular expression search</i></code>
+                    <code> -mtime <span>+7</span> <i># modified more than 7 days ago</i></code>
+                    <code> -size <span>+10M</span> <i># files that are >10MB</i></code>
+                    <code> -size <span>-1G</span> <i># file size less than 1GB</i></code>                    
+                    <code> -user <span>tom </span> <i># files that belong to user tom</i></code>
+                    <code> -type f <i># find only files</i> </code>
+                    <code> -type d <i># find only directories</i> </code>
+                    <code> -type l <i># find only symbolic links</i> </code>
+                </div>
+                <b>actions</b>
+                <div class="examples">
+                    <code> -exec tar rvf arch.tar '{}' \;<i>execute tar command for all files, execute in current dir</i> </code>
+                    <code> -execdir <i>execute in directory of file</i> </code>
+                    <code> -delete <i>delete matched files</i></code>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="section">
+            <h2>bash</h2>
+            <div class="content wide">
+                <div class="desc">
+                    keyboard commands on the bash console. you can also use them inside a screen session
+                </div>            
+                <b>basic bash commands</b>
+                <div class="examples">
+                    <code> cd $dir <i>change into directory</i></code>
+                    <code> history <i>show last executed commands</i></code>
+                    <code> !$nr <i>execute command nr $nr from history</i></code>
+                </div>
+                <b>keyboard shortcuts</b>
+                <div class="examples">
+                    <code> cursor up / down <i>scroll through last commands</i></code>
+                    <code> SHIFT + page up / down <i>view console history</i></code>
+                    <code> CTRL + A <i>jump to first character in line</i></code>
+                    <code> CTRL + E <i>jump to last character in line</i></code>
+                    <code> CTRL + K <i>cut (&memorize) from cursor to end of line</i></code>
+                    <code> CTRL + U <i>cut (&memorize) from cursor to start of line</i></code>
+                    <code> CTRL + Y <i>paste the recently memorized content</i></code>
+                    <code> CTRL + L <i>clear screen</i></code>
+                    <code> CTRL + D <i>quit terminal session (same as entering "exit")</i></code>
+                    <code> CTRL + S <i>stop console scrolling</i></code>                    
+                    <code> CTRL + Q <i>continue console scrolling</i></code>                    
+                </div>
+            </div>
+        </div>
+
+
+        <div class="section">
+            <h2>networking</h2>
+
+            <div class="content">
+                <div class="desc">
+                    Remeber to use <b>sudo</b>b> for commands like ifconfig, nmap or tcpdump.
+                </div>
+                <b>network information and configuration</b>
+                <div class="examples">
+                    <code> cat /proc/net/dev<i> Netzwerktraffic anzeigen </i></code>
+                    <code> ifconfig <i># show network hardware config</i></code>
+                    <code> ifconfig eth0<i># show network interface infos</i></code>
+                    <code> ifconfig eth0 down <i># disable interface eth0</i></code>
+                    <code> ifconfig eth0 up <i># enable interface eth0</i></code>
+                </div>
+            </div>
+            <div class="content wide">
+                <b>scan local network</b>
+                <div class="examples">
+                    <code> iwlist scan <i># show wireless access points</i></code>
+                    <code> nmap -sn 192.168.100.0/24 <i># List other computers on the network</i></code>
+                    <code> nmap -F -O -sV 192.168.100.198 <i># Show details of one computer</i></code>
+                </div>
+            </div>
+            <div class="content">
+                <b>check network traffic</b>
+                <div class="examples">
+                    <code> tcpdump -D <i># list available devices</i></code>
+                    <code> tcpdump -i wlan0  <i># show 68 bytes (=default) of all packets</i></code>
+                    <code> tcpdump -i wlan0 -s 0<i># show all traffic </i></code>
+                    <code> tcpdump -i wlan0 -s 0 -w out.dump tcp port 80 <i># log full traffic on port 80 to file </i></code>
+
+                </div>
+            </div>
+            <div class="content wide">
+                <b>ssh related</b>
+                <div class="examples">
+                    <code> ssh login@machine -L 1521:machine:1521 <i># tunnel local port 1521 to other machines port 1521</i></code>
+                    <code> scp -l 800 hugefile.tgz example.com:~/ <i># Limit SCP upload speed to 800kbit/sec (= ~100kByte/sec)</i></code>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>file transfer</h2>
+
+            <div class="content">
+
+                <b>wget</b>
+                <div class="examples">
+                    <code> wget "ftp://user:pass@ftp.ähh.com/*" -b -r <i># download all files from ftp (-b = in background, -r recursively) </i></code>
+                    <code> wget "ftp://ftp.ähh.com:21/somedir/*" -r --user=user --password=pass <i># some versions need credentials as parameters </i></code>
+                </div>
+
+                <b>scp</b>
+                <div class="examples">
+                    <code> scp ./* user@server.net:/sub/dir/ <i># upload content of current dir </i></code>
+                    <code> scp user@server.net:/var/lib/ibdata1 test <i># download remote file ibdat to local file test </i></code>
+                </div>
+
+                <b>special characters in passwords</b>
+                <div class="desc">
+                unsafe characters in password/username can usually be url-encoded (="% + hex-value of the ascii code"). See this table for the most common unsafe characters:
+                </div>
+                <div class="parameters">
+                    <h3>Parameters</h3>
+                    <table >
+                        <tr><th>'!'</th><td>(%21)</td></tr>
+                        <tr><th>'%'</th><td>(%25)</td></tr>
+                        <tr><th>':'</th><td>(%3A)</td></tr>
+                        <tr><th>'@'</th><td>(%40)</td></tr>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+   
+        <div class="breaker" />
+
+        <div class="section">
+            <h2>screen</h2>
+            <div class="content">
+                <div class="desc">
+                    screen is a terminal-multiplexer. you can use it to save your bash or ssh sessions, keep sessions running on the server if you log out, and much more.
+                </div>
+                <b>manage screen sessions</b>
+                <div class="examples">
+                    <code>screen -S sessionname   <i>start session (with optional name "sessionname")</i></code>
+                    <code>screen -ls   <i>list all my screens</i></code>
+                    <code>screen -r [sessionname]  <i>reattach a running screen to current terminal</i></code>
+                </div>
+            </div>
+            <div class="content wide">
+                <b>keyboard commands inside screen</b>
+                <div class="examples">
+                    <code>CTRL+A d<i> deatach, but keep screen running</i></code>
+                    <code>CTRL+A c<i> create new window</i></code>
+                    <code>CTRL+A n<i> go to next window in current screen</i></code>
+                    <code>CTRL+A p<i> go to previous window in current screen</i></code>
+                    <code>CTRL+A ESC<i> enter "copy mode"</i></code>
+                    <div class="inner">
+                        <b>inside "copy mode":</b>
+                        <code>cursor<i>move around</i></code>
+                        <code>enter <!--/ space--><i>start and stop selection, copy to buffer</i></code>
+                        <code>0<i>jump to first column</i></code>
+                        <code>$<i>jump to end of line</i></code>
+                        <code>page up<i>view the console history</i></code>
+                        <code>ESC<i>exit copy mode</i></code>
+                    </div>
+                    <code>CTRL+A ]<i>paste buffer content</i></code>
+                    <code>CTRL+d <i>close current screen window, or close complete screen if it was the last window</i></code>
+
+
+                </div>
+            </div>                
+        </div>
+
+        <div class="section">
+            <h2>tar</h2>
+            <div class="content">
+                <div class="desc">
+                    <span>tar [options]f filename.tar dir</span>
+                    copy all files from directory "dir" into archive file "filename.tar".
+                </div>
+                <div class="examples">
+                    <code>tar cf a.tar dir <i># create archive a.tar with all files from dir (+subdirs)</i> </code>
+                    <code>tar c<b>z</b>f a.tgz dir <i># archive and gzip files</i>
+                         </code>
+                    <code>tar -czf a.tgz --newer-mtime 02/25/2025 dir <i># archive all files that were created or modified after 25.02.2025 </i>
+                        </code>
+                    <code>tar -czf a.tgz --exclude="temp/*" --exclude="bak/*" dir <i># except files in temp or bak dirs</i>
+                        </code>
+                    <code>
+                        tar -<b>t</b>zf a.tgz <i># print a list of all files in a.tgz</i></code>
+                    <code>tar -xzf a.tgz <i># extract, keep directory structure</i>
+                        </code>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="section">
+            <h2>xargs</h2>
+            <div class="content">
+                <div class="examples">
+                    <code><i># parameters<br />
+                            # -t    display each command before running it
+                            # -p    prompt user before executing eac command
+                            # -I    instead of appending parameters, replace all instances of {}
+                        cat <b>access_log</b> | awk '{urls[<b>$1</b>]++ } END {for (a in urls) {printf ("%09d %s\n", urls[a], a ) }}' |sort</code>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>awk</h2>
+            <div class="content">
+                <div class="examples">
+                    <code><i># print number of occurrence for all urls in <b>first</b> column of <b>access_log</b></i>
+                        cat <b>access_log</b> | awk '{urls[<b>$1</b>]++ } END {for (a in urls) {printf ("%50s\n", a ) }}'</code>
+                         1. Dateien in ".new" umbenennen:
+ ls files_list | awk '{print "mv "$1" "$1".new"}' | sh
+
+ 2. Umbennen innerhalb des Namens:
+ ls -l *old* | awk '{print "mv "$1" "$1}' | sed s/old/new/2 | sh
+
+ 3. Prozesse mit bestimmten Namen beenden
+ kill `ps auxww | grep prozessname_hier | egrep -v grep | awk '{print $2}'`
+
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>mixed</h2>
+            <div class="content">
+                <div class="examples">
+                    <code>
+                    perl -e 'while(true){print (`clear; ps aux|grep check_cron|grep -v grep`); sleep (1); }'
+                    bzw. bei Dateien geht auch einfach tail -f, das zeigt nämlich immer wenn was dazukommt das dazugekommene an:
+                    tail -f /var/log/apache2/access_log
+                    </code>
+                    <code>
+                        df -P | awk '{print $5}'| tr -d '%' | grep '[0-9]' | xargs -I {} sh -c 'if \[ 0 -lt {} \];then echo ne disk is {}% full:;df; fi' | mail -E -s 'disk full' some@user.com
+
+
+                    </code>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div id="footer">
+
+
+    </div>
+</div>
+</body>
+</html>

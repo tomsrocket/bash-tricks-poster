@@ -1,0 +1,30 @@
+body {    background-color:    #fff;    color:#000;}
+* {
+    font-family: "ff-tisa-web-pro-1","ff-tisa-web-pro-2","georgia",serif;
+    text-rendering: optimizelegibility;
+
+}
+h2 {border-bottom:1px solid #464646;}
+
+h1, h2 {color: #D0E700}
+h3 {
+    color: #000;
+}
+.examples {background-color:black;}
+/*.content {background-color:#333;}*/
+th {text-align:right;padding-right:10px;vertical-align: top;border-right:1px solid black;}
+td, th {border-bottom:1px solid black;}
+code {
+    font-family: Courier;
+    font-size: 13px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    height: auto;
+    line-height: normal;
+    text-align: left;
+    white-space: pre;
+    width: auto;
+    color:white;
+    background-color:black;
+}
