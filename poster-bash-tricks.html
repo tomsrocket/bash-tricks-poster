@@ -35,12 +35,17 @@
     }
 
 </style>
+
+<!--
+    uncomment the style you want (dark or white)
+    depending on the quality of the printer, you might want to use "white" style :-)
+-->
 <link href="poster-dark-style.css" rel="stylesheet" type="text/css" />
+<!-- link href="poster-white-style.css" rel="stylesheet" type="text/css" / -->
 
 <!-- 
-
     how to generate A1 PDF from this file: 
-    ./wkhtmltopdf -O Landscape -s A1 /var/www/poster-bash-tricks.html test-a1-v2.pdf
+    wkhtmltopdf -O Landscape -s A1 poster-bash-tricks.html poster-printable.pdf
 -->
 
 </head>
@@ -129,17 +134,19 @@
             <div class="content">
                 <b>process basics</b>
                 <div class="examples">
-                    <code> ps faux <i>list all processes</i></code>
+                    <code> ps fauxw <i>list process tree</i></code>
                     <code> top <i>show processes with most resource usage</i></code>
-                    <code> lsof -n -P |grep * <i> list used ports </i></code>
+                    <code> htop <i>show processes with colors and fancyness</i></code>
+                    <code> lsof -n -P |grep "*" <i> list used ports </i></code>
                 </div>
                 <b>netstat</b>
                 <div class="examples">
-                    <code> netstat -lpnv <i>list listening applications</i></code>
+                    <code> netstat -lpnv <i>list all listening applications</i></code>
                     <code> <i>-l only listening sockets</i></code>
                     <code> <i>-p show process names and ids</i></code>
                     <code> <i>-n numeric, dont resolve hostnames</i></code>
                     <code> <i>-v verbose </i></code>
+                    <code> netstat -tulpen <i>nice list without the clutter</i></code>
                 </div>
             </div>
         </div>
@@ -156,13 +163,13 @@
                 <b> examples </b>
                 <div class="examples wide">
                     <code> grep string *.html -r<i> find string in html files (recursively), show filenames and lines</i></code>
-                    <code> grep -P "regexp" *.sh <i> show regexp matches in .sh files in current dir </i></code>
+                    <code> grep -P "$regexp" *.sh <i> show $regexp matches in .sh files in current dir </i></code>
                     <code> ls | grep  string <i> show all filenames that contain string </i></code>
                 </div>
                 <b> options </b>
                 <div class="examples wide">
                     <code> grep -r<i> find recursively in subdirs</i></code>
-                    <code> grep -o<i> show only the found string</i></code>
+                    <code> grep -o<i> show only the found string / the matching pattern</i></code>
                     <code> grep -i<i> case insensitive</i></code>
                     <code> grep -v<i> invert match</i></code>
                     <code> grep -P<i> perl regular expression matching</i></code>
@@ -237,7 +244,7 @@
 
             <div class="content">
                 <div class="desc">
-                    Remeber to use <b>sudo</b>b> for commands like ifconfig, nmap or tcpdump.
+                    Remeber to use <b>sudo</b> for commands like ifconfig, nmap or tcpdump.
                 </div>
                 <b>network information and configuration</b>
                 <div class="examples">
