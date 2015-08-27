@@ -6,7 +6,10 @@ bash.tricks, a poster showing a fine selection of bash commands & parameters.
 Print it in A1 size and put it on your wall. 
 For geeks, hackers, coders.
 
+## Demo
 
+See the HTML version here: http://tomsrocket.github.io/bash-tricks-poster/poster-bash-tricks.html
+Just to get a rough impression of the commands that are listed and the basic styling. The poster is prettier than the HTML version. :-) 
 
 ## How to compile
 
