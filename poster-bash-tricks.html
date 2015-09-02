@@ -43,8 +43,8 @@
 <link href="poster-dark-style.css" rel="stylesheet" type="text/css" />
 <!-- link href="poster-white-style.css" rel="stylesheet" type="text/css" / -->
 
-<!-- 
-    how to generate A1 PDF from this file: 
+<!--
+    how to generate A1 PDF from this file:
     wkhtmltopdf -O Landscape -s A1 poster-bash-tricks.html poster-printable.pdf
 -->
 
@@ -66,7 +66,7 @@
                 <b>system info</b>
                 <div class="examples">
                     <code> cat /etc/issue<i>show linux distribution name</i></code>
-                    <code> cat /proc/version <i> show kernel version, etc..</i></code> 
+                    <code> cat /proc/version <i> show kernel version, etc..</i></code>
                     <code> cat /proc/cpuinfo <i> processor information</i></code>
                     <code> cat /etc/passwd <i> list users on the system</i></code>
                     <code> cat /etc/services <i>list reserved ports</i></code>
@@ -78,10 +78,12 @@
                     <code> uname -a <i> show information about system</i></code>
                 </div>
 
-                <b> commands </b>
+                <b> hardware info </b>
                 <div class="examples">
-                    <code>which [cmd] <i> show path of command [cmd]</i></code>
-                    <code>ldd [path-to-cmd] <i> show libraries used by [cmd] </i></code>
+                    <code> lspci <i> list all PCI devices</i></code>
+                    <code> lshw <i> list all hardware</i></code>
+                    <code> lshw -class network <i> list network hardware</i></code>
+                    <code> dmidecode <i> List all hardware data from BIOS</i></code>
                 </div>
 
                 <b> users </b>
@@ -99,9 +101,9 @@
                     <code> df -h <i> show harddrive usage</i></code>
                     <code> mount <i> show mount points</i></code>
                     <code> fdisk -l <i> show harddrive and partition info</i></code>
-                    <code> hdparm -t /dev/hdX <i>show HD speed (~100MB/s is normal) </i></code> 
+                    <code> hdparm -t /dev/hdX <i>show HD speed (~100MB/s is normal) </i></code>
                     <code> hdparm -iI /dev/hdX <i> Harddrive information</i></code>
-                </div>                
+                </div>
 
                 <b> files </b>
                 <div class="examples">
@@ -112,20 +114,31 @@
                     <code> rename 's/\.png$/.jpg/' * <i>batch rename files</i></code>
                     <code> du <i> size of current directory </i></code>
                     <code> du --max-depth=1 <i> list sizes of direct subdirs</i></code>
+                    <code> tail -f /var/log/some <i> watch log file changes </i></code>
+                </div>
+
+                <b> console commands debugging </b>
+                <div class="examples">
+                    <code>which [cmd] <i> show path of command [cmd]</i></code>
+                    <code>ldd [path-to-cmd] <i> show libraries used by [cmd] </i></code>
                 </div>
 
                 <b> package management </b>
                 <div class="examples">
-                    <code> apt-cache search regexp <i>search available packages for regexp</i></code>
+                    <code> apt-cache search $regexp <i>search available packages for $regexp</i></code>
                     <code> apt-get install [pkg] <i>install package named [pkg]</i></code>
                 </div>
 
+                <b> send mails </b>
+                <div class="examples">
+                    <code> mail -s "mail subject" some@one.com <i> send email interactively. send = CTRL+D</i></code>
+                    <code> mail -s "mail subject" some@one.com < mailbody.txt <i>Send file contents as email</i></code>
+                    <code> echo "bodytext" | mail -s "mail subject" some@one.com <i> send mail, without need for a file</i></code>
+                </div>
 
-
-                    PATH=somenewpath:$PATH - Suchpfad hinzufügen 
-                    mail -s "mail betreff" irgendwer@wo.de - Email versenden, Ende = STRG+D 
-                    mail -s "mail betreff" irgendwer@wo.de < body.txt - Ohne Interaktion 
-                    echo "bodytext" | mail -s "mail betreff" irgendwer@wo.de - Ohne Datei :-) 
+                <b> environment variables </b>
+                <div class="examples">
+                    <code> PATH=some/new/path:$PATH <i> Add something to the PATH variable</i></code>
                 </div>
             </div>
         </div>
@@ -194,7 +207,7 @@
                     <code> -regex / -iregex <i># regular expression search</i></code>
                     <code> -mtime <span>+7</span> <i># modified more than 7 days ago</i></code>
                     <code> -size <span>+10M</span> <i># files that are >10MB</i></code>
-                    <code> -size <span>-1G</span> <i># file size less than 1GB</i></code>                    
+                    <code> -size <span>-1G</span> <i># file size less than 1GB</i></code>
                     <code> -user <span>tom </span> <i># files that belong to user tom</i></code>
                     <code> -type f <i># find only files</i> </code>
                     <code> -type d <i># find only directories</i> </code>
@@ -215,7 +228,7 @@
             <div class="content wide">
                 <div class="desc">
                     keyboard commands on the bash console. you can also use them inside a screen session
-                </div>            
+                </div>
                 <b>basic bash commands</b>
                 <div class="examples">
                     <code> cd $dir <i>change into directory</i></code>
@@ -233,8 +246,8 @@
                     <code> CTRL + Y <i>paste the recently memorized content</i></code>
                     <code> CTRL + L <i>clear screen</i></code>
                     <code> CTRL + D <i>quit terminal session (same as entering "exit")</i></code>
-                    <code> CTRL + S <i>stop console scrolling</i></code>                    
-                    <code> CTRL + Q <i>continue console scrolling</i></code>                    
+                    <code> CTRL + S <i>stop console scrolling</i></code>
+                    <code> CTRL + Q <i>continue console scrolling</i></code>
                 </div>
             </div>
         </div>
@@ -249,7 +262,8 @@
                 </div>
                 <b>network information and configuration</b>
                 <div class="examples">
-                    <code> cat /proc/net/dev<i> Netzwerktraffic anzeigen </i></code>
+                    <code> lspci | egrep -i --color 'network|ethernet' <i> show network hardware </i></code>
+                    <code> cat /proc/net/dev<i> show network traffic </i></code>
                     <code> ifconfig <i># show network hardware config</i></code>
                     <code> ifconfig eth0<i># show network interface infos</i></code>
                     <code> ifconfig eth0 down <i># disable interface eth0</i></code>
@@ -316,7 +330,7 @@
 
             </div>
         </div>
-   
+
         <div class="breaker" />
 
         <div class="section">
@@ -351,10 +365,34 @@
                     </div>
                     <code>CTRL+A ]<i>paste buffer content</i></code>
                     <code>CTRL+d <i>close current screen window, or close complete screen if it was the last window</i></code>
-
-
                 </div>
-            </div>                
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>tmux</h2>
+            <div class="content">
+                <div class="desc">
+                    tmux is a modern terminal-multiplexer, it replaces screen. Additionally it can split windows.
+                </div>
+            </div>
+            <div class="content wide">
+                <b>keyboard commands inside tmux</b>
+                <div class="examples">
+                    <code>CTRL+b %<i> split window vertically</i></code>
+                    <code>CTRL+b "<i> split window horizontally</i></code>
+                    <code>CTRL+b o<i> go to next split window</i></code>
+                    <code>CTRL+b [<i> enter "copy mode"</i></code>
+                    <div class="inner">
+                        <b>inside "copy mode":</b>
+                        <code>cursor<i>move around</i></code>
+                        <code>CTRL+SPACE<i> visual selection</i></code>
+                        <code>ALT+w<i> copy selection</i></code>
+                        <code>ESC<i>exit copy mode</i></code>
+                    </div>
+                    <code>CTRL+b ]<i>paste selection</i></code>
+                </div>
+            </div>
         </div>
 
         <div class="section">
@@ -366,68 +404,47 @@
                 </div>
                 <div class="examples">
                     <code>tar cf a.tar dir <i># create archive a.tar with all files from dir (+subdirs)</i> </code>
-                    <code>tar c<b>z</b>f a.tgz dir <i># archive and gzip files</i>
-                         </code>
-                    <code>tar -czf a.tgz --newer-mtime 02/25/2025 dir <i># archive all files that were created or modified after 25.02.2025 </i>
-                        </code>
-                    <code>tar -czf a.tgz --exclude="temp/*" --exclude="bak/*" dir <i># except files in temp or bak dirs</i>
-                        </code>
-                    <code>
-                        tar -<b>t</b>zf a.tgz <i># print a list of all files in a.tgz</i></code>
-                    <code>tar -xzf a.tgz <i># extract, keep directory structure</i>
-                        </code>
-                </div>
-            </div>
-        </div>
-
-
-
-        <div class="section">
-            <h2>xargs</h2>
-            <div class="content">
-                <div class="examples">
-                    <code><i># parameters<br />
-                            # -t    display each command before running it
-                            # -p    prompt user before executing eac command
-                            # -I    instead of appending parameters, replace all instances of {}
-                        cat <b>access_log</b> | awk '{urls[<b>$1</b>]++ } END {for (a in urls) {printf ("%09d %s\n", urls[a], a ) }}' |sort</code>
-
+                    <code>tar c<b>z</b>f a.tgz dir <i>archive and gzip files</i> </code>
+                    <code>tar czf a.tgz --newer-mtime 02/25/2025 dir <i>archive all files that were created or modified after 25.02.2025 </i> </code>
+                    <code>tar czf a.tgz --exclude="temp/*" --exclude="bak/*" dir <i>except files in temp or bak dirs</i> </code>
+                    <code>tar <b>t</b>zf a.tgz <i>print a list of all files in a.tgz</i></code>
+                    <code>tar -xzf a.tgz <i>extract, keep directory structure</i></code>
                 </div>
             </div>
         </div>
 
         <div class="section">
             <h2>awk</h2>
-            <div class="content">
+            <div class="content wide">
                 <div class="examples">
-                    <code><i># print number of occurrence for all urls in <b>first</b> column of <b>access_log</b></i>
-                        cat <b>access_log</b> | awk '{urls[<b>$1</b>]++ } END {for (a in urls) {printf ("%50s\n", a ) }}'</code>
-                         1. Dateien in ".new" umbenennen:
- ls files_list | awk '{print "mv "$1" "$1".new"}' | sh
-
- 2. Umbennen innerhalb des Namens:
- ls -l *old* | awk '{print "mv "$1" "$1}' | sed s/old/new/2 | sh
-
- 3. Prozesse mit bestimmten Namen beenden
- kill `ps auxww | grep prozessname_hier | egrep -v grep | awk '{print $2}'`
-
+                    <code>
+                      cat <b>access_log</b> | awk '{urls[<b>$1</b>]++ } END {for (a in urls) {printf ("%50s\n", a ) }}'
+                      <i>print number of occurrence for all urls in <b>first</b> column of <b>access_log</b></i>
+                    </code>
+                    <code> ls dir | awk '{print "mv "$1" "$1".new"}' | sh <i> rename files to ".new"</i></code>
+                    <code>
+                      ls -l *old* | awk '{print "mv "$1" "$1}' | sed s/old/new/2 | sh
+                      <i> rename inside of filename</i>
+                    </code>
+                    <code>
+                      kill `ps auxw | grep $processname | egrep -v grep | awk '{print $2}'`
+                      <i> kill all processes with name $processname</i>
+                    </code>
                 </div>
             </div>
         </div>
 
         <div class="section">
-            <h2>mixed</h2>
+            <h2>advanced exaples</h2>
             <div class="content">
                 <div class="examples">
                     <code>
-                    perl -e 'while(true){print (`clear; ps aux|grep check_cron|grep -v grep`); sleep (1); }'
-                    bzw. bei Dateien geht auch einfach tail -f, das zeigt nämlich immer wenn was dazukommt das dazugekommene an:
-                    tail -f /var/log/apache2/access_log
+                      perl -e 'while(true){print (`clear; ps aux|grep $processname|grep -v grep`); sleep (1); }'
+                      <i> constantly updated list of processes named $processname</i>
                     </code>
                     <code>
                         df -P | awk '{print $5}'| tr -d '%' | grep '[0-9]' | xargs -I {} sh -c 'if \[ 0 -lt {} \];then echo ne disk is {}% full:;df; fi' | mail -E -s 'disk full' some@user.com
-
-
+                        <i>use this cronjob to send you an email you when the disk is full</i>
                     </code>
                 </div>
             </div>
