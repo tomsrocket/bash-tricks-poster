@@ -374,14 +374,26 @@
             <div class="content">
                 <div class="desc">
                     tmux is a modern terminal-multiplexer, it replaces screen. Additionally it can split windows.
-                </div>
+                  </div>
+              </div>
+              <div class="content">
+                  <b>basic usage</b>
+                  <div class="examples">
+                      <code> tmux ls<i> list running sessions</i></code>
+                      <code> tmux new -s session-name<i> create new named session</i></code>
+                      <code> tmux a [-t session-name]<i> resume session [by name]</i></code>
+                  </div>
             </div>
             <div class="content wide">
-                <b>keyboard commands inside tmux</b>
+                <b>keyboard commands inside a tmux session</b>
                 <div class="examples">
+                    <code>CTRL+b ? <i>get help</i></code>
+                    <code>CTRL+b s <i>list sessions</i></code>
+                    <code>CTRL+b $ <i>rename the current session</i></code>
+                    <code>CTRL+b d <i>detach from the current session</i></code>
                     <code>CTRL+b %<i> split window vertically</i></code>
                     <code>CTRL+b "<i> split window horizontally</i></code>
-                    <code>CTRL+b o<i> go to next split window</i></code>
+                    <code>CTRL+b cursor<i> go to split window</i></code>
                     <code>CTRL+b [<i> enter "copy mode"</i></code>
                     <div class="inner">
                         <b>inside "copy mode":</b>
