@@ -143,27 +143,34 @@
             </div>
         </div>
 
-        <div class="section">
-            <h2>processes</h2>
-            <div class="content">
-                <b>process basics</b>
-                <div class="examples">
-                    <code> ps fauxw <i>list process tree</i></code>
-                    <code> top <i>show processes with most resource usage</i></code>
-                    <code> htop <i>show processes with colors and fancyness</i></code>
-                    <code> lsof -n -P |grep "*" <i> list used ports </i></code>
+                <div class="section">
+                    <h2>bash</h2>
+                    <div class="content wide">
+                        <div class="desc">
+                            keyboard commands on the bash console. you can also use them inside a screen session
+                        </div>
+                        <b>basic bash commands</b>
+                        <div class="examples">
+                            <code> cd $dir <i>change into directory</i></code>
+                            <code> history <i>show last executed commands</i></code>
+                            <code> !$nr <i>execute command nr $nr from history</i></code>
+                        </div>
+                        <b>keyboard shortcuts</b>
+                        <div class="examples">
+                            <code> cursor up / down <i>scroll through last commands</i></code>
+                            <code> SHIFT + page up / down <i>view console history</i></code>
+                            <code> CTRL + A <i>jump to first character in line</i></code>
+                            <code> CTRL + E <i>jump to last character in line</i></code>
+                            <code> CTRL + K <i>cut (&memorize) from cursor to end of line</i></code>
+                            <code> CTRL + U <i>cut (&memorize) from cursor to start of line</i></code>
+                            <code> CTRL + Y <i>paste the recently memorized content</i></code>
+                            <code> CTRL + L <i>clear screen</i></code>
+                            <code> CTRL + D <i>quit terminal session (same as entering "exit")</i></code>
+                            <code> CTRL + S <i>stop console scrolling</i></code>
+                            <code> CTRL + Q <i>continue console scrolling</i></code>
+                        </div>
+                    </div>
                 </div>
-                <b>netstat</b>
-                <div class="examples">
-                    <code> netstat -lpnv <i>list all listening applications</i></code>
-                    <code> <i>-l only listening sockets</i></code>
-                    <code> <i>-p show process names and ids</i></code>
-                    <code> <i>-n numeric, dont resolve hostnames</i></code>
-                    <code> <i>-v verbose </i></code>
-                    <code> netstat -tulpen <i>nice list without the clutter</i></code>
-                </div>
-            </div>
-        </div>
 
 
         <div class="section">
@@ -224,32 +231,38 @@
 
 
         <div class="section">
-            <h2>bash</h2>
-            <div class="content wide">
-                <div class="desc">
-                    keyboard commands on the bash console. you can also use them inside a screen session
-                </div>
-                <b>basic bash commands</b>
+            <h2>processes</h2>
+            <div class="content">
+                <b>process basics</b>
                 <div class="examples">
-                    <code> cd $dir <i>change into directory</i></code>
-                    <code> history <i>show last executed commands</i></code>
-                    <code> !$nr <i>execute command nr $nr from history</i></code>
+                    <code> ps fauxw <i>list process tree</i></code>
+                    <code> top <i>show processes with most resource usage</i></code>
+                    <code> htop <i>show processes with colors and fancyness</i></code>
+                    <code> lsof -n -P |grep "*" <i> list used ports </i></code>
                 </div>
-                <b>keyboard shortcuts</b>
+                <b>netstat</b>
                 <div class="examples">
-                    <code> cursor up / down <i>scroll through last commands</i></code>
-                    <code> SHIFT + page up / down <i>view console history</i></code>
-                    <code> CTRL + A <i>jump to first character in line</i></code>
-                    <code> CTRL + E <i>jump to last character in line</i></code>
-                    <code> CTRL + K <i>cut (&memorize) from cursor to end of line</i></code>
-                    <code> CTRL + U <i>cut (&memorize) from cursor to start of line</i></code>
-                    <code> CTRL + Y <i>paste the recently memorized content</i></code>
-                    <code> CTRL + L <i>clear screen</i></code>
-                    <code> CTRL + D <i>quit terminal session (same as entering "exit")</i></code>
-                    <code> CTRL + S <i>stop console scrolling</i></code>
-                    <code> CTRL + Q <i>continue console scrolling</i></code>
+                    <code> netstat -lpnv <i>list all listening applications</i></code>
+                    <code> <i>-l only listening sockets</i></code>
+                    <code> <i>-p show process names and ids</i></code>
+                    <code> <i>-n numeric, dont resolve hostnames</i></code>
+                    <code> <i>-v verbose </i></code>
+                    <code> netstat -tulpen <i>nice list without the clutter</i></code>
                 </div>
             </div>
+
+            <h2>sed</h2>
+            <div class="content">
+              <div class="desc">
+                add or replace strings in files or STDOUT
+              </div>
+                <b>examples</b>
+                <div class="examples">
+                    <code> sed 's/some/other/' file <i>replace some with other in file, print result</i></code>
+                    <code> sed -r 's/perl-regex/replacement/' file <i>replace with perl regex</i></code>
+                </div>
+            </div>
+
         </div>
 
 
@@ -415,6 +428,7 @@
                     <span>tar [options]f filename.tar dir</span>
                     copy all files from directory "dir" into archive file "filename.tar".
                 </div>
+                <b>examples</b>
                 <div class="examples">
                     <code>tar cf a.tar dir <i># create archive a.tar with all files from dir (+subdirs)</i> </code>
                     <code>tar c<b>z</b>f a.tgz dir <i>archive and gzip files</i> </code>
@@ -424,6 +438,21 @@
                     <code>tar -xzf a.tgz <i>extract, keep directory structure</i></code>
                 </div>
             </div>
+
+            <h2>gzip / bzip2</h2>
+            <div class="content">
+                <div class="desc">
+                    <span>gzip [options] filename</span>
+                    Compress or uncompress files. gzip and bzip2 have almost same syntax.
+                </div>
+                <b>examples</b>
+                <div class="examples">
+                    <code>gzip $file <i>compress $file into $file.gz, remove $file</i> </code>
+                    <code>gzip -d $file.gz <i>uncompress $file.gz into $file</i> </code>
+                    <code>gzip -dc $file | more<i>uncompress $file to STDOUT</i> </code>
+                </div>
+            </div>
+
         </div>
 
         <div class="section">
