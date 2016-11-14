@@ -460,6 +460,9 @@
             <div class="content wide">
                 <div class="examples">
                     <code>
+                      awk -F"\t" '{print $3}' filename <i>Print third column of tab separated file (-F specify separator char)</i>
+                    </code>
+                    <code>
                       cat <b>access_log</b> | awk '{urls[<b>$1</b>]++ } END {for (a in urls) {printf ("%50s\n", a ) }}'
                       <i>print number of occurrence for all urls in <b>first</b> column of <b>access_log</b></i>
                     </code>
