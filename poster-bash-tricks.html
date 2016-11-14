@@ -481,6 +481,10 @@
             <div class="content">
                 <div class="examples">
                     <code>
+                        for i in `seq 20 10 100`; do echo $i; done
+                        <i>print the numbers from 20 to 100 in steps of 10</i>
+                    </code>
+                    <code>
                       perl -e 'while(true){print (`clear; ps aux|grep $processname|grep -v grep`); sleep (1); }'
                       <i> constantly updated list of processes named $processname</i>
                     </code>
