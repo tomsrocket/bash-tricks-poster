@@ -6,6 +6,7 @@
     .examples code {display:block;}
     h1 {font-size:3em;}
     .section {width:23%;float:left;padding-right:20px;}
+    
     table {width:100%}
     .desc span, code, code i, .inner b {font-family:Courier, monospace;font-weight:normal;}
     .desc { font-family: Verdana;}
@@ -263,8 +264,19 @@
                 </div>
             </div>
 
-        </div>
+            <h2>vim</h2>
+            <div class="content">
+              <div class="desc">
+                Vim is a text editor like EMACS. VIM has it's own poster :)
+              </div>
+                <b>use vim for prettifying files</b>
+                <div class="examples">
+                    <code> :1,$!xmllint --format --recover - 2>/dev/null <i>Prettify XML</i></code>
+                    <code> :%!python -m json.tool <i>Prettify JSON</i></code>
+                </div>
+            </div>
 
+        </div>
 
         <div class="section">
             <h2>networking</h2>
